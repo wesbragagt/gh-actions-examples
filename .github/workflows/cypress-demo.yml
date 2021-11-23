@@ -6,29 +6,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Fetch code
+      - uses: c-hive/gha-yarn-cache@v2
 
+      - name: Install JS dependencies
+        run: yarn install
 
-      - name: Cache node modules
-      - uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-            **/.eslintcache
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+      - name: Unit Test
+        run: yarn test
 
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+      # - name: E2E Testing
+      #   run: |
+      #     yarn e2e:ci
 
-      - name: Install Packages
-        run: yarn install --frozen-lockfile --quiet
-
-      - name: E2E Testing
-        run: |
-          yarn e2e:ci
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: artifacts
-          path: ./artifacts
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     name: artifacts
+      #     path: ./artifacts
