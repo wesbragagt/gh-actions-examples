@@ -6,19 +6,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Fetch code
+
       - uses: c-hive/gha-yarn-cache@v2
+        name: Handles caching node_modules
 
       - name: Install JS dependencies
-        run: yarn install
+        run: yarn install --froze-lockfile --quiet
 
-      - name: Unit Test
-        run: yarn test
+      - name: E2E Testing
+        run: |
+          yarn e2e:ci
 
-      # - name: E2E Testing
-      #   run: |
-      #     yarn e2e:ci
-
-      # - uses: actions/upload-artifact@v2
-      #   with:
-      #     name: artifacts
-      #     path: ./artifacts
+      - uses: actions/upload-artifact@v2
+        with:
+          name: artifacts
+          path: ./artifacts
