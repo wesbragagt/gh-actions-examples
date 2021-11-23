@@ -1,5 +1,5 @@
 {
-    "baseUrl": "http://localhost:9001",
+    "baseUrl": "http://localhost:3000",
     "screenshotsFolder": "artifacts/screenshots",
     "downloadsFolder": "artifacts/downloads",
     "videosFolder": "artifacts/videos",
