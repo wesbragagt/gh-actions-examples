@@ -1,0 +1,8 @@
+{
+    "baseUrl": "http://localhost:9001",
+    "screenshotsFolder": "artifacts/screenshots",
+    "downloadsFolder": "artifacts/downloads",
+    "videosFolder": "artifacts/videos",
+    "video": false,
+    "chromeWebSecurity": false
+}
