@@ -7,6 +7,9 @@ jobs:
       - uses: actions/checkout@v2
         name: Fetch code
 
+      - name: Install
+        run: yarn install --frozen-lockfile --quiet
+
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -19,3 +22,7 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
+      - name: E2E Testing
+        run: |
+          yarn e2e:ci
