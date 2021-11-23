@@ -7,6 +7,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Fetch code
+
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
       - name: Prepare
         id: prep
         run: |
@@ -26,7 +33,6 @@ jobs:
           key: ${{ runner.os }}-single-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-single-buildx
-
       - run: docker-compose up --abort-on-container-exit --exit-code-from e2e
         name: E2E Tests on Docker Compose
 
