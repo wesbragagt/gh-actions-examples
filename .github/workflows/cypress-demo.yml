@@ -6,5 +6,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Fetch code
-      - run: ls -a /bin
-      - run: yarn
+      - run: yarn install --frozen-lockfile --quiet
+      - run: yarn e2e:ci 
