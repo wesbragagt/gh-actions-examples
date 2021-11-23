@@ -13,9 +13,11 @@ jobs:
       - name: Install JS dependencies
         run: yarn install --froze-lockfile --quiet
 
-      - name: E2E Testing
-        run: |
-          yarn e2e:ci
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn build
+          start: yarn start
 
       - uses: actions/upload-artifact@v2
         with:
