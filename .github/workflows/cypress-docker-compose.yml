@@ -1,9 +1,8 @@
 name: Github Actions/Cypress Docker Compose
 on: workflow_dispatch
 jobs:
-  cypress-e2e:
+  cypress-e2e-docker-compose:
     runs-on: ubuntu-latest
-    container: cypress/included:9.0.0
     steps:
       - uses: actions/checkout@v2
         name: Fetch code
