@@ -26,3 +26,8 @@ jobs:
       - name: E2E Testing
         run: |
           yarn e2e:ci
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: artifacts
+          path: ./artifacts
