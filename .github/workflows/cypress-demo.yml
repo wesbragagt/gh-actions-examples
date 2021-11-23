@@ -4,4 +4,7 @@ jobs:
   cypress-e2e:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "yay"
+      - uses: actions/checkout@v2
+        name: Fetch code
+      - run: ls -a /bin
+      - run: yarn
