@@ -12,8 +12,10 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@master
 
-      - run: docker-compose up --abort-on-container-exit --exit-code-from e2e
-        name: E2E Tests on Docker Compose
+      - run: sudo chmod +x e2e.sh
+
+      - run: bash e2e.sh
+        name: E2E Tests
 
       - uses: actions/upload-artifact@v2
         with:
